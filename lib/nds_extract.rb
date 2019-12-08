@@ -33,8 +33,7 @@ def list_of_directors(source)
     directors.push(source[counter1][:name])
     counter += 1
   end
-  
-  
+  directors
 end
 
 def total_gross(source)
@@ -47,33 +46,17 @@ def total_gross(source)
   # Visit each key (i.e. director name), look up the value in the hash
   # returned by directors_totals, and add it to a running total. When done,
   # return the total
-end
-
-
-def list_of_directors(source)
-  names = []
-  i = 0
-
-  while i < source.length do
-    names << source[i][:name]
-    i += 1
-  end
-
-  names
-end
-
-def total_gross(source)
-  dir_to_earnings_hash = directors_totals(source)
-  dir_names = list_of_directors(source)
-  i = 0
-
+  new_hash = directors_totals(source)
+  names = list_of_directors(source)
+  counter2 = 0
   total = 0
-
-  while i < dir_names.length do
-    dir_name = dir_names[i]
-    total += dir_to_earnings_hash[dir_name]
-    i += 1
+  
+  while counter2 < names.length do
+    name = names[counter2]
+    total += new_hash[name]
+    counter2 += 1
   end
-
   total
 end
+
+
